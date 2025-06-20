@@ -27,7 +27,7 @@ module.exports.create = Joi.object({
     .label("Inquiry Type"),
 
   source: Joi.string()
-    .valid(...INQUIRY_SOURCE, "")
+    .valid(...INQUIRY_SOURCE)
     .label("Inquiry Source"),
 
   visitorType: Joi.string().allow("").label("Visitor Type"),
@@ -71,6 +71,7 @@ module.exports.update = Joi.object({
   source: Joi.string()
     .valid(...INQUIRY_SOURCE)
     .label("Inquiry Source"),
+
   visitorType: Joi.string().allow("").label("Visitor Type"),
   product: Joi.string().allow("").trim().label("Product"),
   resumeFile: Joi.string().allow("").trim().label("Resume"),
