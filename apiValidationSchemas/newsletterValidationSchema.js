@@ -12,7 +12,7 @@ module.exports.create = Joi.object({
     .valid(...SUBSCRIPTION_STATUS, "")
     .label("Subscription Status"),
   source: Joi.string()
-    .valid(...NEWSLETTER_SOURCE, "")
+    .valid(...NEWSLETTER_SOURCE)
     .label("Newsletter Source"),
 });
 
@@ -37,7 +37,7 @@ module.exports.update = Joi.object({
     .valid(...SUBSCRIPTION_STATUS, "")
     .label("Subscription Status"),
   source: Joi.string()
-    .valid(...NEWSLETTER_SOURCE, "")
+    .valid(...NEWSLETTER_SOURCE)
     .label("Newsletter Source"),
 });
 

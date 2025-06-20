@@ -18,7 +18,7 @@ const modelSchema = new mongoose.Schema(
       default: INQUIRY_TYPES[0],
     },
 
-    inquirySource: {
+    source: {
       type: String,
       enum: INQUIRY_SOURCE,
       default: INQUIRY_SOURCE[0],

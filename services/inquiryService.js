@@ -62,6 +62,7 @@ module.exports.findAll = async (serviceData) => {
       searchQuery,
       inquiryStatus = "ALL",
       inquiryType = "ALL",
+      source = "ALL",
       isDeleted = false,
     } = serviceData;
 
@@ -84,6 +85,13 @@ module.exports.findAll = async (serviceData) => {
       delete conditions.inquiryType;
     } else {
       conditions.inquiryType = inquiryType;
+    }
+
+    // source
+    if (source == "ALL") {
+      delete conditions.source;
+    } else {
+      conditions.source = source;
     }
 
     // DeletedAccount

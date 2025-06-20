@@ -26,8 +26,8 @@ module.exports.create = Joi.object({
     .valid(...INQUIRY_TYPES)
     .label("Inquiry Type"),
 
-  inquirySource: Joi.string()
-    .valid(...INQUIRY_SOURCE)
+  source: Joi.string()
+    .valid(...INQUIRY_SOURCE, "")
     .label("Inquiry Source"),
 
   visitorType: Joi.string().allow("").label("Visitor Type"),
@@ -68,7 +68,7 @@ module.exports.update = Joi.object({
     .valid(...INQUIRY_TYPES)
     .label("Inquiry Type"),
 
-  inquirySource: Joi.string()
+  source: Joi.string()
     .valid(...INQUIRY_SOURCE)
     .label("Inquiry Source"),
   visitorType: Joi.string().allow("").label("Visitor Type"),
@@ -93,7 +93,7 @@ module.exports.findAll = Joi.object({
   limit: Joi.string(),
   searchQuery: Joi.string(),
   inquiryType: Joi.string().valid(...INQUIRY_TYPES, "ALL", ""),
-  inquirySource: Joi.string().valid(...INQUIRY_SOURCE, "ALL", ""),
+  source: Joi.string().valid(...INQUIRY_SOURCE, "ALL"),
   inquiryStatus: Joi.string().valid(...INQUIRY_STATUS, "ALL", ""),
 });
 
