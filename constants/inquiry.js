@@ -1,0 +1,27 @@
+module.exports = {
+  INQUIRY_TYPES: [
+    "GENERAL",
+    "PRODUCT",
+    "CAREER",
+    "COMPLAINS",
+    "EXPORT",
+    "PRICE",
+    "SAMPLING",
+    "SUPPLIER",
+    "CATALOGUE",
+    "CERTIFICATE",
+  ],
+  INQUIRY_STATUS: ["PENDING", "RESOLVED"],
+  INQUIRY_SOURCE: [
+    "PRODUCT",
+    "CAREER",
+    "COMPLAINS",
+    "EXPORT",
+    "PRICE",
+    "SAMPLING",
+    "SUPPLIER",
+    "CATALOGUE",
+    "CERTIFICATE",
+    "POPUP",
+  ],
+};

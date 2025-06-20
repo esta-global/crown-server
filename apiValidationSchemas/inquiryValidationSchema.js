@@ -1,7 +1,10 @@
 const Joi = require("joi");
 const { customCallback } = require("../helpers/joiHelper");
-const { INQUIRY_TYPES } = require("../constants/inquiryTypes");
-const { INQUIRY_STATUS } = require("../constants/inquiryStatus");
+const {
+  INQUIRY_STATUS,
+  INQUIRY_TYPES,
+  INQUIRY_SOURCE,
+} = require("../constants/inquiry");
 
 // create
 module.exports.create = Joi.object({
@@ -21,7 +24,12 @@ module.exports.create = Joi.object({
   inquiryType: Joi.string()
     .required()
     .valid(...INQUIRY_TYPES)
-    .label("Interested"),
+    .label("Inquiry Type"),
+
+  inquirySource: Joi.string()
+    .valid(...INQUIRY_SOURCE)
+    .label("Inquiry Source"),
+
   visitorType: Joi.string().allow("").label("Visitor Type"),
   product: Joi.string().allow("").trim().label("Product"),
   category: Joi.string().allow("").trim().label("Category"),
@@ -58,7 +66,11 @@ module.exports.update = Joi.object({
 
   inquiryType: Joi.string()
     .valid(...INQUIRY_TYPES)
-    .label("Interested"),
+    .label("Inquiry Type"),
+
+  inquirySource: Joi.string()
+    .valid(...INQUIRY_SOURCE)
+    .label("Inquiry Source"),
   visitorType: Joi.string().allow("").label("Visitor Type"),
   product: Joi.string().allow("").trim().label("Product"),
   resumeFile: Joi.string().allow("").trim().label("Resume"),
@@ -81,6 +93,7 @@ module.exports.findAll = Joi.object({
   limit: Joi.string(),
   searchQuery: Joi.string(),
   inquiryType: Joi.string().valid(...INQUIRY_TYPES, "ALL", ""),
+  inquirySource: Joi.string().valid(...INQUIRY_SOURCE, "ALL", ""),
   inquiryStatus: Joi.string().valid(...INQUIRY_STATUS, "ALL", ""),
 });
 

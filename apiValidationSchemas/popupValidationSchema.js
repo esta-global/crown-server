@@ -36,7 +36,7 @@ module.exports.findAll = Joi.object({
   page: Joi.string(),
   limit: Joi.string(),
   searchQuery: Joi.string(),
-  statys: Joi.string().valid(...POPUP_TYPES, "ALL", ""),
+  status: Joi.string().valid(...POPUP_TYPES, "ALL", ""),
 });
 
 // findById

@@ -1,6 +1,9 @@
 const mongoose = require("mongoose");
-const { INQUIRY_STATUS } = require("../../constants/inquiryStatus");
-const { INQUIRY_TYPES } = require("../../constants/inquiryTypes");
+const {
+  INQUIRY_TYPES,
+  INQUIRY_STATUS,
+  INQUIRY_SOURCE,
+} = require("../../constants/inquiry");
 const modelSchema = new mongoose.Schema(
   {
     name: { type: String, trim: true, required: true },
@@ -13,6 +16,12 @@ const modelSchema = new mongoose.Schema(
       type: String,
       enum: INQUIRY_TYPES,
       default: INQUIRY_TYPES[0],
+    },
+
+    inquirySource: {
+      type: String,
+      enum: INQUIRY_SOURCE,
+      default: INQUIRY_SOURCE[0],
     },
 
     visitorType: {

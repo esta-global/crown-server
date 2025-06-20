@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const {
   SUBSCRIPTION_STATUS,
-  NEWSLETTER_TYPES,
+  NEWSLETTER_SOURCE,
 } = require("../../constants/newsletter");
 
 const modelSchema = new mongoose.Schema(
@@ -19,10 +19,10 @@ const modelSchema = new mongoose.Schema(
       default: SUBSCRIPTION_STATUS[0],
     },
 
-    newsletterType: {
+    source: {
       type: String,
-      enum: NEWSLETTER_TYPES,
-      default: NEWSLETTER_TYPES[0],
+      enum: NEWSLETTER_SOURCE,
+      default: NEWSLETTER_SOURCE[0],
     },
 
     isDeleted: {
