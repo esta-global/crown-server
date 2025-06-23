@@ -13,6 +13,7 @@ module.exports = {
   ],
   INQUIRY_STATUS: ["PENDING", "RESOLVED"],
   INQUIRY_SOURCE: [
+    "GENERAL",
     "PRODUCT",
     "CAREER",
     "COMPLAINS",
