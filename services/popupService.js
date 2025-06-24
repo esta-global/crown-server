@@ -112,6 +112,13 @@ module.exports.update = async (serviceData) => {
   try {
     const { id, body } = serviceData;
 
+    if (serviceData.status == "true") {
+      await popupModel.updateMany(
+        { status: true },
+        { $set: { status: false } }
+      );
+    }
+
     const result = await popupModel.findByIdAndUpdate(id, body, {
       new: true,
     });
