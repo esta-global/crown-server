@@ -23,7 +23,6 @@ module.exports.update = Joi.object({
   image: Joi.string().allow("").label("Image"),
 
   popupType: Joi.string()
-    .required()
     .valid(...POPUP_TYPES)
     .label("Popup Type"),
 

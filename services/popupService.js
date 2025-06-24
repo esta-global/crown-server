@@ -112,10 +112,11 @@ module.exports.update = async (serviceData) => {
   try {
     const { id, body } = serviceData;
 
-    if (serviceData.status == true) {
+    if (body.status == true) {
       await popupModel.updateMany(
         { status: true },
-        { $set: { status: false } }
+        { $set: { status: false } },
+        { new: true }
       );
     }
 
