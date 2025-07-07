@@ -49,6 +49,7 @@ const modelSchema = new mongoose.Schema(
     },
 
     orderStatus: { type: String, enum: ORDER_STATUS, default: "ORDER_PLACED" },
+    updateNote: { type: String, default: "" },
 
     isDeleted: { type: Boolean, default: false },
   },

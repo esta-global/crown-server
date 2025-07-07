@@ -70,7 +70,10 @@ module.exports.update = Joi.object({
   state: Joi.string().label("State"),
   country: Joi.string().label("Country"),
   pincode: Joi.string().label("Pincode"),
-  orderStatus: Joi.string().valid(...ORDER_STATUS, ""),
+  orderStatus: Joi.string()
+    .valid(...ORDER_STATUS, "")
+    .label("Update Note"),
+  updateNote: Joi.string().allow("").label("Update Note"),
 });
 
 // deleteMultiple

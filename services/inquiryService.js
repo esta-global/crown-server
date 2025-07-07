@@ -61,7 +61,8 @@ module.exports.findAll = async (serviceData) => {
       page = 1,
       searchQuery,
       inquiryStatus = "ALL",
-      inquiryType = "ALL",
+      // inquiryType = "ALL",
+      inquiryTypes = [],
       source = "ALL",
       isDeleted = false,
     } = serviceData;
@@ -80,11 +81,15 @@ module.exports.findAll = async (serviceData) => {
       conditions.inquiryStatus = inquiryStatus;
     }
 
-    // subsinquiryType
-    if (inquiryType == "ALL") {
+    // inquiryTypes
+    if (Array.isArray(inquiryTypes)) {
+      if (inquiryTypes.length) {
+        conditions.inquiryType = { $in: inquiryTypes };
+      }
+    } else if (inquiryTypes == "ALL") {
       delete conditions.inquiryType;
     } else {
-      conditions.inquiryType = inquiryType;
+      conditions.inquiryType = inquiryTypes;
     }
 
     // source

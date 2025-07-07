@@ -93,7 +93,15 @@ module.exports.findAll = Joi.object({
   page: Joi.string(),
   limit: Joi.string(),
   searchQuery: Joi.string(),
-  inquiryType: Joi.string().valid(...INQUIRY_TYPES, "ALL", ""),
+  // inquiryType: Joi.string().valid(...INQUIRY_TYPES, "ALL", ""),
+  inquiryTypes: Joi.alternatives()
+    .try(
+      Joi.string().valid(...INQUIRY_TYPES, "ALL", ""),
+      Joi.array()
+        .items(Joi.string().valid(...INQUIRY_TYPES))
+        .min(1)
+    )
+    .label("Inquiry Types"),
   source: Joi.string().valid(...INQUIRY_SOURCE, "ALL"),
   inquiryStatus: Joi.string().valid(...INQUIRY_STATUS, "ALL", ""),
 });
