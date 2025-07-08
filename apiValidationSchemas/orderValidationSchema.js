@@ -55,6 +55,7 @@ module.exports.findById = Joi.object({
 module.exports.update = Joi.object({
   name: Joi.string().label("Name"),
   mobile: Joi.string()
+    .allow("")
     // .regex(/^\d{10}$/) // Allows exactly 10 digits
     // .messages({
     //   "string.empty": `"Mobile" must contain a value`,
@@ -64,12 +65,12 @@ module.exports.update = Joi.object({
   email: Joi.string().email().label("Email"),
 
   // Shipping Address
-  address: Joi.string().label("Address"),
+  address: Joi.string().allow("").label("Address"),
   locality: Joi.string().allow("").label("Locality"),
-  city: Joi.string().label("City"),
-  state: Joi.string().label("State"),
-  country: Joi.string().label("Country"),
-  pincode: Joi.string().label("Pincode"),
+  city: Joi.string().allow("").label("City"),
+  state: Joi.string().allow("").label("State"),
+  country: Joi.string().allow("").label("Country"),
+  pincode: Joi.string().allow("").label("Pincode"),
   orderStatus: Joi.string()
     .valid(...ORDER_STATUS, "")
     .label("Update Note"),
