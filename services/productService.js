@@ -239,6 +239,7 @@ module.exports.findAll = async (serviceData) => {
           { name: { $regex: searchQuery, $options: "i" } },
           { slug: { $regex: searchQuery, $options: "i" } },
           { decorNumber: { $regex: searchQuery, $options: "i" } },
+          { ralNumber: { $regex: searchQuery, $options: "i" } },
         ],
       };
 
