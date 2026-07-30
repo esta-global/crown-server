@@ -12,7 +12,24 @@ dbConnection();
 // Create a app
 const app = express();
 
-app.use(cors());
+const allowedOrigins = [
+  "https://www.crownlam.com",
+  "https://crownlam.com",
+  "https://admin.crownlam.com",
+  "https://www.admin.crownlam.com",
+];
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin || allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      return callback(new Error("Not allowed by CORS"));
+    },
+  }),
+);
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -47,7 +64,7 @@ app.use("/api/v1/admins", require("./routes/adminRouter"));
 app.use("/api/v1/categories", require("./routes/categoryRouter"));
 app.use(
   "/api/v1/catalogueCategories",
-  require("./routes/catalogueCategoryRouter")
+  require("./routes/catalogueCategoryRouter"),
 );
 app.use("/api/v1/catalogues", require("./routes/catalogueRouter"));
 app.use("/api/v1/certificates", require("./routes/certificateRouter"));
